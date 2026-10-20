@@ -41,8 +41,8 @@ jobs:
           PROXY_SERVER: ''
           HTTPS_PROXY: ''
           HTTP_PROXY: ''
-          https_proxy: ''
-          http_proxy: ''
           TG_BOT_TOKEN: ''
           TG_CHAT_ID: ''
-        run: python auto_create.py
+        run: |
+            unset https_proxy http_proxy
+            python auto_create.py
