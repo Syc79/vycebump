@@ -21,6 +21,8 @@ concurrency:
 
 jobs:
   renew:
+    # 仅在明确把自动化所有权切换到 GitHub 后运行；local 时由本机 Edge 续期，避免双重 POST。
+    if: ${{ vars.VYCE_AUTOMATION_OWNER == 'github' }}
     runs-on: ubuntu-latest
 
     steps:
