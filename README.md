@@ -90,6 +90,8 @@ Vyce.cloud 为免费 VPS（如 `Vps-Mini`，1 vCore / 2 GB RAM / 6 GB NVMe / 纯
 
 工作流默认每 4 小时运行一次（`0 */4 * * *`），并支持手动指定 `force` 强制续期（忽略冷却保护，用于调试）。
 
+续期和库存创建工作流都受 Repository Variable `VYCE_AUTOMATION_OWNER` 控制：只有值为 `github` 时才会启动 runner；值为 `local` 或未设置时跳过任务。不要在本机 Edge 自动监控或续期仍启用时切换到 `github`，以免云端与本机同时执行。切换前先停止本机任务，并确认没有待核验的创建或续期请求。
+
 ### 方式二：本地运行（搭配 Chrome 9222 端口）
 
 本机 Chrome 已登录 `https://vyce.cloud/#/servers` 且开启远程调试端口（需本机具备 `node` 供 CDP WebSocket 提取 Cookie）时：
