@@ -15,6 +15,8 @@ concurrency:
 
 jobs:
   check-and-create:
+    # 仅在明确把自动化所有权切换到 GitHub 后运行；local 时由本机 Edge 监控，避免重复创建。
+    if: ${{ vars.VYCE_AUTOMATION_OWNER == 'github' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
